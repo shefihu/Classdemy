@@ -60,11 +60,14 @@ export const loginInitiate = (email, password, displayName) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         // updateProfile({ displayName });
-        console.log(user);
+
         dispatch(loginSuccess(user));
         Cookies.set("accessToken", user.accessToken, {
           expires: 7,
         });
+        Cookies.get("accessToken");
+        // Cookies.get("accessToken");
+        // console.log(Cookies.get("accessToken"));
       })
       .catch((err) => dispatch(loginFail(err.message)));
   };

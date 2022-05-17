@@ -4,21 +4,22 @@ import { useNavigate } from "react-router-dom";
 import Content2 from "../components/Content2";
 import Contents from "../components/Contents";
 import Navbar from "../components/Navbar";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!currentUser) {
-      // toasters.success("Welcome back, User");
-      navigate("/login");
+    if (currentUser) {
+      toast.success("Welcome back, User");
     }
   }, [navigate, currentUser]);
   return (
     <div>
       <Navbar />
-      <section class="w-full px-6 pb-12  antialiased bg-white">
+      <ToastContainer />
+      <section class="w-full px-6 pb-4 bg-white antialiased ">
         <div class="mx-auto max-w-7xl">
           <div class="container max-w-lg px-4 py-32 mx-auto text-left md:max-w-none md:text-center">
             <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
@@ -35,7 +36,7 @@ const Home = () => {
               <span class="relative inline-flex w-full md:w-auto">
                 <a
                   href="#_"
-                  class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-yellow-300 border border-transparent rounded-full md:w-auto hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600"
+                  class="inline-flex items-center justify-center w-full px-8 py-2 text-base font-bold leading-6 text-white bg-yellow-300 border border-transparent rounded-full md:w-auto hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600"
                 >
                   Get Started
                 </a>
@@ -50,8 +51,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <br />
-      <Contents />
+
+      {/* <Contents /> */}
       <Content2 />
     </div>
   );

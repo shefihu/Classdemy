@@ -3,22 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { loginInitiate } from "../redux/actions/actions";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   // const [state, setState] = useState({
   //   email: "",
   //   password: "",
   // });
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const { currentUser } = useSelector((state) => state.user);
+  // const { loading } = { currentUser };
+
+  const notify = () => toast("Wow so easy !");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (currentUser) {
-      navigate("/");
-    }
-  }, [currentUser, navigate]);
+  console.log(loading);
+
   // const { email, password } = state;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,20 +28,27 @@ const Login = () => {
       return;
     }
 
+    setLoading(true);
     dispatch(loginInitiate(email, password));
     // setState({ email: "", password: "" });
+    setLoading(true);
 
-    console.log(currentUser);
     // Cookies.set("accessToken", user.currentUser.accessToken, {
     //   expires: 7,
     // });
   };
   useEffect(() => {
-    if (!currentUser) {
-      // toasters.success("Welcome back, User");
-      navigate("/login");
+    if (currentUser) {
+      navigate("/");
+      // toast("wow so easey");
     }
-  }, [navigate, currentUser]);
+  }, [currentUser, navigate]);
+  console.log(currentUser);
+  // useEffect(() => {
+  //   if (!currentUser) {
+  //     navigate("/login");
+  //   }
+  // }, [navigate, currentUser]);
   // const handleChange = (e) => {
   //   let { name, value } = e.target;
   //   setState({ ...state, [name]: value });
@@ -48,6 +57,7 @@ const Login = () => {
   return (
     <div>
       <Navbar />
+      <ToastContainer />
       <section class="w-full h-screen px-8 py-16 bg-gray-100 xl:px-8">
         <div class="max-w-5xl mx-auto">
           <div class="flex flex-col items-center md:flex-row">
@@ -95,16 +105,27 @@ const Login = () => {
                   required
                 />
                 <div class="block">
-                  <button
-                    type="submit"
-                    class="w-full px-3 py-4 font-medium text-white bg-yellow-300 rounded-lg"
-                  >
-                    Sign In
-                  </button>
+                  {!loading && (
+                    <button
+                      type="submit"
+                      class="w-full px-3 py-2 font-medium text-white bg-yellow-300 rounded-lg"
+                    >
+                      Sign In
+                    </button>
+                  )}
+                  {loading && (
+                    <button
+                      type="submit"
+                      disabled
+                      class="w-full px-3 py-2 font-medium text-white bg-yellow-300 rounded-lg"
+                    >
+                      <div className="w-5 h-5 text-center border-4 border-dashed rounded-full animate-spin border-white-400"></div>
+                    </button>
+                  )}
                 </div>
                 <button
                   onClick={handleGoogleSignIn}
-                  class="inline-block w-full px-5 py-4 mt-3 text-lg font-bold text-center text-yellow-300 transition duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 ease"
+                  class="inline-block w-full px-3 py-2 mt-3 text-lg font-bold text-center text-yellow-300 transition duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 ease"
                 >
                   Sign up with Google
                 </button>
@@ -118,6 +139,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <button onClick={notify}>Notify</button>
       </section>
     </div>
   );

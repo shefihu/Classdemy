@@ -11,14 +11,15 @@ const Register = () => {
     confirmPassword: "",
     displayName: "",
   });
+  const [loading, setLoading] = useState();
   console.log(state);
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (currentUser) {
-      navigate("/");
-    }
-  }, [currentUser, navigate]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     navigate("/");
+  //   }
+  // }, [currentUser, navigate]);
   const dispatch = useDispatch();
   const { email, password, displayName, confirmPassword } = state;
   const handleSubmit = (e) => {
@@ -59,7 +60,7 @@ const Register = () => {
                   </p>
                   <a
                     href="/login"
-                    class="inline-block  px-4 py-3 text-xl font-medium text-center text-white transition duration-200 bg-yellow-300 rounded-lg hover:bg-yellow-200 ease"
+                    class="inline-block  px-3 py-2 text-xl font-medium text-center text-white transition duration-200 bg-yellow-300 rounded-lg hover:bg-yellow-200 ease"
                   >
                     Get Started Today
                   </a>
@@ -89,7 +90,7 @@ const Register = () => {
                       onChange={handleChange}
                       required
                       id="fullName"
-                      class="block w-full px-4 py-3 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
+                      class="block w-full px-4 py-2 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
                       placeholder="Enter Your Name"
                     />
                   </div>
@@ -102,7 +103,7 @@ const Register = () => {
                       onChange={handleChange}
                       required
                       name="email"
-                      class="block w-full px-4 py-3 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
+                      class="block w-full px-4 py-2 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
                       placeholder="Enter Your Email Address"
                     />
                   </div>
@@ -111,7 +112,7 @@ const Register = () => {
                     <input
                       type="password"
                       name="password"
-                      class="block w-full px-4 py-3 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
+                      class="block w-full px-4 py-2 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
                       placeholder="Password"
                       onChange={handleChange}
                       id="inputPassword"
@@ -128,17 +129,29 @@ const Register = () => {
                       required
                       onChange={handleChange}
                       value={confirmPassword}
-                      class="block w-full px-4 py-3 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
+                      class="block w-full px-4 py-2 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:ring-opacity-50"
                       placeholder="Password"
                     />
                   </div>
                   <div class="relative">
-                    <button
-                      type="submit"
-                      class="inline-block w-full px-5 py-3 text-lg font-medium text-center text-white transition duration-200 bg-yellow-300 rounded-lg hover:bg-yellow-400 ease"
-                    >
-                      Create Account
-                    </button>
+                    {!loading && (
+                      <button
+                        type="submit"
+                        class="inline-block w-full px-3 py-2 text-lg font-medium text-center text-white transition duration-200 bg-yellow-300 rounded-lg hover:bg-yellow-400 ease"
+                      >
+                        Create Account
+                      </button>
+                    )}
+                    {loading && (
+                      <button
+                        type="submit"
+                        disabled
+                        class="inline-block w-full px-3 py-2 text-lg font-medium text-center text-white transition duration-200 bg-yellow-300 rounded-lg hover:bg-yellow-400 ease"
+                      >
+                        <div className="w-5 h-5 text-center border-4 border-dashed rounded-full animate-spin border-white-400"></div>
+                      </button>
+                    )}
+
                     {/* <a
                       href="#_"
                       class="inline-block w-full px-5 py-4 mt-3 text-lg font-bold text-center text-gray-900 transition duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 ease"

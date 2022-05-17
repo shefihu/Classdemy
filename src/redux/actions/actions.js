@@ -39,7 +39,7 @@ const logoutFail = (error) => ({
   type: types.LOGOUT_FAILURE,
   payload: error,
 });
-export const registerInitiate = (email, password, displayName) => {
+export const registerInitiate = (email, password) => {
   return function (dispatch) {
     dispatch(registerStart());
 
@@ -53,7 +53,7 @@ export const registerInitiate = (email, password, displayName) => {
       .catch((err) => dispatch(registerFail(err.message)));
   };
 };
-export const loginInitiate = (email, password, displayName) => {
+export const loginInitiate = (email, password, setLoading) => {
   return function (dispatch) {
     dispatch(loginStart());
 
@@ -62,12 +62,14 @@ export const loginInitiate = (email, password, displayName) => {
         // updateProfile({ displayName });
 
         dispatch(loginSuccess(user));
-        Cookies.set("accessToken", user.accessToken, {
+        // setLoading(false);
+        // console.log("ggggggggg", setLoading);
+        Cookies.set("accessToken", JSON.stringify(user), {
           expires: 7,
         });
         Cookies.get("accessToken");
         // Cookies.get("accessToken");
-        // console.log(Cookies.get("accessToken"));
+        console.log(Cookies.get("accessToken"));
       })
       .catch((err) => dispatch(loginFail(err.message)));
   };
@@ -81,6 +83,7 @@ export const logoutInitiate = () => {
         // updateProfile({
         //   displayName,
         // });
+        Cookies.remove("accessToken");
         dispatch(logoutSuccess());
       })
       .catch((err) => dispatch(logoutFail(err.message)));

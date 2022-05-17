@@ -4,141 +4,118 @@ const Content2 = () => {
   return (
     <div>
       {" "}
-      <section class="px-2 pt-32 bg-white md:px-0">
-        <div class="container items-center max-w-6xl px-5 mx-auto space-y-6 text-center">
-          <h1 class="text-4xl font-extrabold tracking-tight text-left text-gray-900 sm:text-5xl md:text-6xl md:text-center">
-            <span class="block">
-              Level Up Your{" "}
-              <span class="block mt-1 text-purple-500 lg:inline lg:mt-0">
-                Landing Pages
-              </span>
-            </span>
-          </h1>
-          <p class="w-full mx-auto text-base text-left text-gray-500 md:max-w-md sm:text-lg lg:text-2xl md:max-w-3xl md:text-center">
-            Award winning pages that will take your game to the next level!
-          </p>
-          <div class="relative flex flex-col justify-center md:flex-row md:space-x-4">
-            <a
-              href="#_"
-              class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-purple-500 rounded-md md:mb-0 hover:bg-purple-700 md:w-auto"
-            >
-              Try It Free
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5 ml-1"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
-            <a
-              href="#_"
-              class="flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600"
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
-        <div class="container items-center max-w-4xl px-5 mx-auto mt-16 text-center">
-          <img src="https://cdn.devdojo.com/images/november2020/hero-image.png" />
-        </div>
-      </section>
-      {/* <div className="sign">
-        <span className="fast-flicker">W</span>elc
-        <span className="flicker">o</span>me
-      </div> */}
-      {/* <a href="https://www.youtube.com/watch?v=szLmLFsisbY" target="_blank">
-        <section className="section">
-          <div className="container">
-            <div className="row mt-15">
-              <div className="text-center widthset">
-                <div
-                  className="position-relative rounded-top progress-wrapper"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #f8e739, #f1d42d, #eac222, #e1b019, #d89e10)",
-                  }}
-                >
-                  <div className="wave" style={{ bottom: "80%" }}>
-                    <h1 className="heading-style">L</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center widthset">
-                <div
-                  className="position-relative rounded-top progress-wrapper"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #d89e10, #e28f00, #ec7f00, #f66b00, #ff5200)",
-                  }}
-                >
-                  <div className="wave" style={{ bottom: "80%" }}>
-                    <h1 className="heading-style">I</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center widthset">
-                <div
-                  className="position-relative rounded-top progress-wrapper"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #e2130b, #e1110c, #e00f0d, #df0c0d, #de090e)",
-                  }}
-                >
-                  <div className="wave" style={{ bottom: "80%" }}>
-                    <h1 className="heading-style">Q</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center widthset">
-                <div
-                  className="position-relative rounded-top progress-wrapper"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #ce0061, #d50079, #d60094, #d000b3, #c115d4)",
-                  }}
-                >
-                  <div className="wave" style={{ bottom: "80%" }}>
-                    <h1 className="heading-style">U</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center widthset">
-                <div
-                  className="position-relative rounded-top progress-wrapper"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #6a0ddc, #5f0ddd, #530edd, #450fde, #3210de)",
-                  }}
-                >
-                  <div className="wave" style={{ bottom: "80%" }}>
-                    <h1 className="heading-style">I</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center widthset">
-                <div
-                  className="position-relative rounded-top progress-wrapper"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #0c2fd4, #0045d8, #0056d9, #0065d8, #1b73d5)",
-                  }}
-                >
-                  <div className="wave" style={{ bottom: "80%" }}>
-                    <h1 className="heading-style">D</h1>
+      <div className="overflow-y-hidden">
+        <div className="pb-16" style={{ fontFamily: '"Lato", sans-serif' }}>
+          {/* Code block starts */}
+          <dh-component>
+            <div className="pt-16">
+              <div className="py-12 bg-gray-100">
+                <div className="max-w-8xl mx-auto container">
+                  <div
+                    tabIndex={0}
+                    aria-label="group of cards"
+                    className="focus:outline-none flex flex-wrap items-center justify-center sm:justify-between"
+                  >
+                    <div
+                      tabIndex={0}
+                      aria-label="card 1"
+                      className="focus:outline-none flex flex-col items-center py-6 md:py-0 px-6 w-full sm:w-1/2 md:w-1/4"
+                    >
+                      <div className="w-20 h-20 relative ml-6">
+                        <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
+                        <div className="text-white absolute bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/compact_heading_with_icon-SVG1.svg"
+                            alt="drawer"
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        tabIndex={0}
+                        className="focus:outline-none text-lg font-medium leading-6 text-gray-800 text-center pt-5"
+                      >
+                        Ready to use
+                        <br />
+                        components
+                      </h4>
+                    </div>
+                    <div
+                      tabIndex={0}
+                      aria-label="card 2"
+                      className="focus:outline-none flex flex-col items-center py-6 md:py-0 px-6 w-full sm:w-1/2 md:w-1/4"
+                    >
+                      <div className="w-20 h-20 relative ml-6">
+                        <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
+                        <div className="text-white absolute bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/compact_heading_with_icon-SVG2.svg"
+                            alt="check"
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        tabIndex={0}
+                        className="focus:outline-none text-lg font-medium leading-6 text-gray-800 text-center pt-5"
+                      >
+                        Coded by Developers
+                        <br />
+                        for Developers
+                      </h4>
+                    </div>
+                    <div
+                      tabIndex={0}
+                      aria-label="card 3"
+                      className="focus:outline-none flex flex-col items-center py-6 md:py-0 px-6 w-full sm:w-1/2 md:w-1/4"
+                    >
+                      <div className="w-20 h-20 relative ml-6">
+                        <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
+                        <div className="text-white absolute bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/compact_heading_with_icon-SVG3.svg"
+                            alt="html tag"
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        tabIndex={0}
+                        className="focus:outline-none text-lg font-medium leading-6 text-gray-800 text-center pt-5"
+                      >
+                        Hight Quality UI
+                        <br />
+                        you can rely on
+                      </h4>
+                    </div>
+                    <div
+                      tabIndex={0}
+                      aria-label="card 4"
+                      className="focus:outline-none flex flex-col items-center py-6 md:py-0 px-6 w-full sm:w-1/2 md:w-1/4"
+                    >
+                      <div className="w-20 h-20 relative ml-6">
+                        <div className="absolute top-0 right-0 bg-indigo-100 rounded w-16 h-16 mt-2 mr-1" />
+                        <div className="text-white absolute bottom-0 left-0 bg-indigo-700 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
+                          <img
+                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/compact_heading_with_icon-SVG4.svg"
+                            alt="monitor"
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        tabIndex={0}
+                        className="focus:outline-none text-lg font-medium leading-6 text-gray-800 text-center pt-5"
+                      >
+                        The Last UI kit
+                        <br />
+                        you’ll ever need
+                      </h4>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </a> */}
+          </dh-component>
+          {/* Code block ends */}
+        </div>
+      </div>
     </div>
   );
 };

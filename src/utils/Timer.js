@@ -2,14 +2,7 @@ import dayjs, { Dayjs } from "dayjs";
 export function getRemainingTime(timestampMs) {
   const timestampDayjs = dayjs(timestampMs);
   const nowDayjs = dayjs();
-  if (timestampDayjs.isBefore(nowDayjs)) {
-    return {
-      days: "00",
-      hours: "00",
-      minutes: "00",
-      seconds: "00",
-    };
-  }
+ 
   return {
     seconds: getRemainingSeconds(nowDayjs, timestampDayjs),
     minutes: getRemainingMinutes(nowDayjs, timestampDayjs),

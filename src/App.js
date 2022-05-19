@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Register";
 import Test from "./pages/Test";
+import Test2 from "./pages/Test2";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -27,7 +28,11 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="blog" element={<Blog />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="test" element={<Test />} />
+        <Route
+          path="test"
+          element={<Test coundownTimestampMs={1643673600000} />}
+        />
+        <Route path="test2" element={<Test2 />} />
       </Routes>
     </div>
   );

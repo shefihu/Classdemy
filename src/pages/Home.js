@@ -10,11 +10,11 @@ const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (currentUser) {
-      toast.success("Welcome back, User");
-    }
-  }, [navigate, currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     toast.success("Welcome back, User");
+  //   }
+  // }, [navigate, currentUser]);
   return (
     <div>
       <Navbar />

@@ -146,13 +146,37 @@
 //   </div>
 // );
 // export default Index;
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
-const Test = () => {
+import Cookies from "js-cookie";
+import { getRemainingTime } from "../utils/Timer";
+const Test = ({ coundownTimestampMs }) => {
   const colors = ["red", "blue", "green"];
   const [number, setNumber] = useState(0);
   const [inpoot, setInpoot] = useState("palazo");
   const [color, setColor] = useState("red");
+  const [heading, setHeading] = useState("");
+  const intervalss = {
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
+  };
+
+  const [remainingTime, setRemainingTime] = useState(intervalss);
+  const [toas, setToas] = useState(false);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      updateRemainingTime(coundownTimestampMs);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [coundownTimestampMs]);
+  const updateRemainingTime = (countdown) => {
+    console.log("bitches come and go brah");
+    setRemainingTime(getRemainingTime(countdown));
+  };
+
   // const [numbere, setNumbere] = useState(0);
   // const [text, setText] = useState(true);
   const reducer = (state, action) => {
@@ -166,6 +190,21 @@ const Test = () => {
       default:
         return state;
     }
+  };
+  // useEffect(() => {
+  //   setHeading(heading);
+  // }, [heading]);
+  const handleHead = (e) => {
+    e.preventDefault();
+    setHeading(heading);
+    Cookies.set("power", heading);
+    window.location = "/test2";
+  };
+  const handleToast = () => {
+    setToas(true);
+  };
+  const handleToas = () => {
+    setToas(false);
   };
   const randomNo = getRandomNo();
   const submit = () => {
@@ -224,6 +263,94 @@ const Test = () => {
       <button onClick={submit} style={{ backgroundColor: `${color}` }}>
         power
       </button>
+      <form onSubmit={handleHead}>
+        <h1 className="font-bold">{heading}</h1>
+        <input
+          type="text"
+          onChange={(e) => {
+            setHeading(e.target.value);
+          }}
+          name="heading"
+        />
+        <button type="submit">head handler</button>
+      </form>
+      {toas && (
+        <>
+          {" "}
+          <div class="flex space-x-2 justify-center">
+            <div
+              class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block"
+              id="static-example"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+              data-mdb-autohide="false"
+            >
+              <div class=" bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg">
+                <p class="font-bold text-gray-500">MDBootstrap</p>
+                <div class="flex items-center">
+                  <p class="text-gray-600 text-xs">11 mins ago</p>
+                  <button
+                    type="button"
+                    class=" btn-close box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                    data-mdb-dismiss="toast"
+                    aria-label="Close"
+                    onClick={handleToas}
+                  ></button>
+                </div>
+              </div>
+              <div class="p-3 bg-white rounded-b-lg break-words text-gray-700">
+                Static Example
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      <button onClick={handleToast}>Toaster</button>
+      <div class="text-yellow-100">
+        <h1 class="text-3xl text-center mb-3 font-extralight">
+          When will pubs open in England?*
+        </h1>
+        <div class="text-6xl text-center flex w-full items-center justify-center">
+          <div class="text-2xl mr-1 font-extralight">in</div>
+          <div class="w-24 mx-1 p-2 bg-white text-yellow-500 rounded-lg">
+            <div class="font-mono leading-none" x-text="days">
+              {remainingTime.days}
+            </div>
+            <div class="font-mono uppercase text-sm leading-none">Days</div>
+          </div>
+          <div class="w-24 mx-1 p-2 bg-white text-yellow-500 rounded-lg">
+            <div class="font-mono leading-none" x-text="hours">
+              {remainingTime.hours}
+            </div>
+            <div class="font-mono uppercase text-sm leading-none">Hours</div>
+          </div>
+          <div class="w-24 mx-1 p-2 bg-white text-yellow-500 rounded-lg">
+            <div class="font-mono leading-none" x-text="minutes">
+              {remainingTime.minutes}
+            </div>
+            <div class="font-mono uppercase text-sm leading-none">Minutes</div>
+          </div>
+          <div class="text-2xl mx-1 font-extralight">and</div>
+          <div class="w-24 mx-1 p-2 bg-white text-yellow-500 rounded-lg">
+            <div class="font-mono leading-none" x-text="seconds">
+              {remainingTime.seconds}
+            </div>
+            <div class="font-mono uppercase text-sm leading-none">Seconds</div>
+          </div>
+        </div>
+        <p class="text-sm text-center mt-3">
+          *
+          <a
+            href="https://twitter.com/10DowningStreet/status/1363897254340419587"
+            class="underline hover:text-yellow-200"
+            target="_blank"
+          >
+            As per goverment plan
+          </a>
+          . Subject to change.
+        </p>
+      </div>
     </div>
   );
 };

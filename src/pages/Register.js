@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { registerInitiate } from "../redux/actions/actions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Register = () => {
   const [state, setState] = useState({
     email: "",
@@ -25,10 +27,13 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      return;
+      toast("cant see these passwords working");
+    } else {
+      dispatch(registerInitiate(email, password, displayName));
     }
-    dispatch(registerInitiate(email, password, displayName));
-    setState({ email: "", displayName: "", password: "", confirmPassword: "" });
+
+    // setState({ email: "", displayName: "", password: "", confirmPassword: "" });
+    navigate("/login");
   };
   const handleChange = (e) => {
     let { name, value } = e.target;

@@ -13,6 +13,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
   const { currentUser } = useSelector((state) => state.user);
   // const { loading } = { currentUser };
 
@@ -40,7 +41,6 @@ const Login = () => {
   useEffect(() => {
     if (currentUser) {
       navigate("/");
-      // toast("wow so easey");
     }
   }, [currentUser, navigate]);
   console.log(currentUser);

@@ -29,10 +29,12 @@ const Navbar = () => {
           {/* For large and Medium-sized Screen */}
           <div className="flex justify-between ">
             <div className="hidden sm:flex flex-row items-center space-x-6">
-              <svg
+              <Link to="/test">Test</Link>
+              {/* <svg
                 className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
                 width={24}
                 height={24}
+                
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +45,7 @@ const Navbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>
+              </svg> */}
               <svg
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
                 width={24}
@@ -225,7 +227,7 @@ const Navbar = () => {
             className={`${show ? "block" : "hidden"} sm:hidden mt-4 mx-auto`}
           >
             <div className="flex flex-row items-center justify-center space-x-6">
-              <svg
+              {/* <svg
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
                 width={24}
                 height={24}
@@ -239,7 +241,8 @@ const Navbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>
+              </svg> */}
+              <Link to="/test">Test</Link>
               <svg
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
                 width={24}

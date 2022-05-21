@@ -30,7 +30,7 @@ const Home = () => {
             <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
               <span class="inline md:block">Welcome to Sensei</span>{" "}
               <span class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-red-600 to-yellow-300 md:inline-block">
-                X Classroom
+                X CClassroom
               </span>
             </h1>
             <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">
@@ -62,6 +62,7 @@ const Home = () => {
       <br />
       {/* <Contents /> */}
       <Content2 />
+
       <div className="pt-32 lg:flex items-center relative z-10 container mx-auto">
         <div className="w-full lg:w-1/2 h-full lg:pr-10 xl:pr-0">
           <img

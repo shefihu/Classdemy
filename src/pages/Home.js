@@ -156,9 +156,6 @@ const Home = () => {
       <Test5 />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
       <Test6 />
       <br />
       <br />

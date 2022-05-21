@@ -157,7 +157,7 @@ const Home = () => {
       <Test5 />
       <br />
       <br />
-      <Test6 />
+      {/* <Test6 /> */}
       <br />
       <br />
       <br />

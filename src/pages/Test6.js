@@ -6,11 +6,10 @@ export default function Home() {
       <div className="container mx-auto px-4  flex flex-col w-screen lg:items-center justify-between lg:flex-row">
         <div className="mb-14 xl:mb-0">
           <h1 className="text-2xl leading-tight md:text-4xl xl:text-5xl font-semibold leading-10   text-gray-800 xl:w-2/3 pr-16 lg:pr-0">
-            Our customers love what we do
+            Our Students love what we provide
           </h1>
           <p className="mt-4 text-base leading-normal text-gray-600 md:w-2/3 lg:w-3/4 pr-16 lg:pr-0">
-            Over 500 companies use our product to understand their business and
-            marketing better.
+            senseixsenseixsenseixsenseixsenseixsenseixsenseixsenseixsenseix
           </p>
           <button className="hidden md:block w-full sm:w-auto mt-12 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 flex items-start justify-center sm:justify-start px-8 py-4 bg-indigo-700 hover:bg-gray-600 rounded text-base font-medium leading-none text-center text-white">
             Read success stories

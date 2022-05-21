@@ -11,7 +11,7 @@ export default function Home() {
           <p className="mt-4 text-base leading-normal text-gray-600 md:w-2/3 lg:w-3/4 pr-16 lg:pr-0">
             senseixsenseixsenseixsenseixsenseixsenseixsenseixsenseixsenseix
           </p>
-          <button className="hidden md:block w-full sm:w-auto mt-12 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 flex items-start justify-center sm:justify-start px-8 py-4 bg-indigo-700 hover:bg-gray-600 rounded text-base font-medium leading-none text-center text-white">
+          <button className="hidden md:block w-full sm:w-auto mt-12 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 flex items-start justify-center sm:justify-start px-8 py-4 bg-yellow-300 hover:bg-gray-600 rounded text-base font-medium leading-none text-center text-white">
             Read success stories
           </button>
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <button className="md:hidden w-full sm:w-auto mt-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 flex items-start justify-center sm:justify-start px-8 py-4 bg-indigo-700 hover:bg-gray-600 rounded text-base font-medium leading-none text-center text-white">
+          <button className="md:hidden w-full sm:w-auto mt-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 flex items-start justify-center sm:justify-start px-8 py-4 bg-yellow-300 hover:bg-gray-600 rounded text-base font-medium leading-none text-center text-white">
             Read success stories
           </button>
         </div>

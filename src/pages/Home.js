@@ -6,6 +6,11 @@ import Contents from "../components/Contents";
 import Navbar from "../components/Navbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Test3 from "./Test3";
+
+import Test5 from "./Test5";
+import Test6 from "./Test6";
+import Footer from "./Footer";
 const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -138,6 +143,28 @@ const Home = () => {
           </div> */}
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <Test3 />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Test5 />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Test6 />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Footer />
     </div>
   );
 };

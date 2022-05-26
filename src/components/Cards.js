@@ -1,5 +1,7 @@
 import { doc } from "firebase/firestore";
+import { produceWithPatches } from "immer";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ClassDataService from "../services/classservices";
 const Cards = () => {
   const [classes, setClasses] = useState([]);
@@ -15,73 +17,91 @@ const Cards = () => {
     setClasses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     setLoading(true);
   };
-
-  //   const docs = [
-  //     {
-  //       id: 1,
-  //       name: "Mr awwal",
-  //       href: "#",
-  //       price: "Mthematics",
-  //       imageSrc:
-  //         "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
-  //       imageAlt:
-  //         "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Mr awwal",
-  //       href: "#",
-  //       price: "  English",
-  //       imageSrc:
-  //         "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
-  //       imageAlt:
-  //         "Olive drab green insulated bottle with flared screw lid and flat top.",
-  //     },
-  //     {
-  //       id: 3,
-  //       name: "Mr awwal",
-  //       href: "#",
-  //       price: "Physics",
-  //       imageSrc:
-  //         "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
-  //       imageAlt: "Person using a pen to cross a task off a docivity paper card.",
-  //     },
-  //     {
-  //       id: 4,
-  //       name: "Mr awwal",
-  //       href: "#",
-  //       price: "Chemistry",
-  //       imageSrc:
-  //         "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
-  //       imageAlt:
-  //         "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  //     },
-  //     {
-  //       id: 4,
-  //       name: "Mr awwal",
-  //       href: "#",
-  //       price: "Chemistry",
-  //       imageSrc:
-  //         "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
-  //       imageAlt:
-  //         "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  //     },
-  //     {
-  //       id: 4,
-  //       name: "Mr awwal",
-  //       href: "#",
-  //       price: "Chemistry",
-  //       imageSrc: "",
-  //       imageAlt:
-  //         "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  //     },
-  //     // More docs...
-  //   ];
+  const navigate = useNavigate();
+  const addClass = () => {
+    navigate("/addclass");
+  };
+  const docs = [
+    {
+      id: 1,
+      name: "Mr awwal",
+      href: "#",
+      price: "Mthematics",
+      imageSrc:
+        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
+      imageAlt:
+        "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
+    },
+    {
+      id: 2,
+      name: "Mr awwal",
+      href: "#",
+      price: "  English",
+      imageSrc:
+        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
+      imageAlt:
+        "Olive drab green insulated bottle with flared screw lid and flat top.",
+    },
+    {
+      id: 3,
+      name: "Mr awwal",
+      href: "#",
+      price: "Physics",
+      imageSrc:
+        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
+      imageAlt: "Person using a pen to cross a task off a docivity paper card.",
+    },
+    {
+      id: 4,
+      name: "Mr awwal",
+      href: "#",
+      price: "Chemistry",
+      imageSrc:
+        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
+      imageAlt:
+        "Hand holding black machined steel mechanical pencil with brass tip and top.",
+    },
+    {
+      id: 4,
+      name: "Mr awwal",
+      href: "#",
+      price: "Chemistry",
+      imageSrc:
+        "https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165",
+      imageAlt:
+        "Hand holding black machined steel mechanical pencil with brass tip and top.",
+    },
+    {
+      id: 4,
+      name: "Mr awwal",
+      href: "#",
+      price: "Chemistry",
+      imageSrc: "",
+      imageAlt:
+        "Hand holding black machined steel mechanical pencil with brass tip and top.",
+    },
+    // More docs...
+  ];
   return (
     <div>
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="sr-only">docs</h2>
+          <div className=" ml-10 hidden  lg:flex justify-end ">
+            <button
+              onClick={addClass}
+              class="bg-yellow-300   hover:bg-yellow-300 mb-10 text-white font-bold py-2 px-4 rounded"
+            >
+              Add Classes
+            </button>
+          </div>
+          <div className=" lg:hidden  lgflex justify-end ">
+            <button
+              onClick={addClass}
+              class="bg-yellow-300  hover:bg-yellow-300 mb-10 text-white font-bold py-2 px-4 rounded"
+            >
+              Add Classes
+            </button>
+          </div>
           <div className="grid grid-cols-2 w-9/12 ml-10 absolute gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {loading ? (
               <>
@@ -105,16 +125,12 @@ const Cards = () => {
                 ))}
               </>
             ) : (
-              <div className="flex w-96 mx-96   justify-center">
-                <div className="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
-                  <div className="h-48 rounded-t bg-gray-700"></div>
-                  <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-900">
-                    <div className="w-full h-6 rounded bg-gray-700"></div>
-                    <div className="w-full h-6 rounded bg-gray-700"></div>
-                    <div className="w-3/4 h-6 rounded bg-gray-700"></div>
-                  </div>
-                </div>{" "}
-              </div>
+              <>
+                <div className="w-10/12 mx-auto my-auto ">
+                  {" "}
+                  <div className="w-12 h-12 border-4  border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+                </div>
+              </>
             )}
           </div>
         </div>

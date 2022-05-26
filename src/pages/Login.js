@@ -40,7 +40,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (currentUser) {
-      navigate("/");
+      navigate("/class");
     }
   }, [currentUser, navigate]);
   console.log(currentUser);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Test8 from "../pages/Test8";
 import { logoutInitiate } from "../redux/actions/actions";
 // import { Container, Nav, NavDropdown } from "react-bootstrap";
 
@@ -136,11 +137,8 @@ const Navbar = () => {
             <div className="hidden sm:flex flex-row space-x-4">
               {console.log(currentUser)}
               {currentUser ? (
-                <button
-                  onClick={logoutHandler}
-                  className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center"
-                >
-                  Log out
+                <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">
+                  <Test8 />
                 </button>
               ) : (
                 <>
@@ -318,11 +316,8 @@ const Navbar = () => {
               {currentUser ? (
                 <>
                   {" "}
-                  <button
-                    onClick={logoutHandler}
-                    class="self-center px-8 py-3 font-bold rounded bg-yellow-300 text-white dark:bg-violet-400 dark:text-coolGray-900"
-                  >
-                    Log out
+                  <button class="self-center px-8 py-3 font-bold rounded bg-yellow-300 text-white dark:bg-violet-400 dark:text-coolGray-900">
+                    <Test8 />
                   </button>
                 </>
               ) : (

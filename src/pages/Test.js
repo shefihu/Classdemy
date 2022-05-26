@@ -150,12 +150,14 @@ import React, { useEffect, useReducer, useState } from "react";
 
 import Cookies from "js-cookie";
 import { getRemainingTime } from "../utils/Timer";
+import Test8 from "./Test8";
 const Test = ({ coundownTimestampMs }) => {
   const colors = ["red", "blue", "green"];
   const [number, setNumber] = useState(0);
   const [inpoot, setInpoot] = useState("palazo");
   const [color, setColor] = useState("red");
   const [heading, setHeading] = useState("");
+  const [modal, setModal] = useState("");
   const intervalss = {
     days: "00",
     hours: "00",
@@ -351,6 +353,7 @@ const Test = ({ coundownTimestampMs }) => {
           . Subject to change.
         </p>
       </div>
+      <Test8 />
     </div>
   );
 };

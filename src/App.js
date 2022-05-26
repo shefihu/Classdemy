@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Blog from "./pages/Blog";
+import Classes from "./pages/Classes";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
@@ -17,17 +18,19 @@ function App() {
     <div className="App bg-white">
       <Routes>
         <Route path="login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            <RequireAuth>
-              <Home />
-            </RequireAuth>
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route path="register" element={<Register />} />
         <Route path="blog" element={<Blog />} />
         <Route path="*" element={<PageNotFound />} />
+
+        <Route
+          path="class"
+          element={
+            <RequireAuth>
+              <Classes />
+            </RequireAuth>
+          }
+        />
         <Route
           path="test"
           element={<Test coundownTimestampMs={1652991878} />}

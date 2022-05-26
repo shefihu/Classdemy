@@ -89,7 +89,7 @@ const Test8 = () => {
           </div>
         </>
       )}
-      <button onClick={openModal}>Log out</button>
+      <button onClick={openModal}>LOg out</button>
     </div>
   );
 };

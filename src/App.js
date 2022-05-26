@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
+import AddClass from "./components/AddClass";
 import Blog from "./pages/Blog";
 import Classes from "./pages/Classes";
 import Home from "./pages/Home";
@@ -36,6 +37,7 @@ function App() {
           element={<Test coundownTimestampMs={1652991878} />}
         />
         <Route path="test2" element={<Test2 />} />
+        <Route path="addclass" element={<AddClass />} />
       </Routes>
     </div>
   );

@@ -26,7 +26,7 @@ class ClassDataService {
     return getDocs(classCollectionRef);
   };
   getClass = (id) => {
-    const classDoc = doc(db, "books", id);
+    const classDoc = doc(db, "classes", id);
     return getDoc(classDoc);
   };
 }

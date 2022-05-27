@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Register";
+import SingleClass from "./pages/SingleClass";
 import Test from "./pages/Test";
 import Test2 from "./pages/Test2";
 
@@ -37,6 +38,7 @@ function App() {
           element={<Test coundownTimestampMs={1652991878} />}
         />
         <Route path="addclass" element={<AddClass />} />
+        <Route path="singleclass" element={<SingleClass />} />
         <Route path="test2" element={<Test2 />} />
       </Routes>
     </div>

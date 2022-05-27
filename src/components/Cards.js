@@ -1,7 +1,7 @@
 import { doc } from "firebase/firestore";
 import { produceWithPatches } from "immer";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ClassDataService from "../services/classservices";
 const Cards = () => {
   const [classes, setClasses] = useState([]);
@@ -102,11 +102,15 @@ const Cards = () => {
               Add Classes
             </button>
           </div>
-          <div className="grid grid-cols-2 w-9/12 ml-10 absolute gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <div className="grid grid-cols-1 w-9/12 ml-10 absolute gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {loading ? (
               <>
                 {classes.map((doc, index) => (
-                  <a key={doc.id} href={doc.href} className="group">
+                  <Link
+                    key={doc.id}
+                    to={`/singleclass?id=${doc.id}`}
+                    className="group"
+                  >
                     <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                       <img
                         src="https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165"
@@ -121,7 +125,7 @@ const Cards = () => {
                     <p className="mt-1 text-lg font-medium text-gray-900">
                       {doc.course}
                     </p>
-                  </a>
+                  </Link>
                 ))}
               </>
             ) : (

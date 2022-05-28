@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { logoutInitiate } from "../redux/actions/actions";
+import { logoutInitiate, signout } from "../redux/actions/actions";
 
 const Test8 = () => {
   const [modal, setModal] = useState(false);
-  const { currentUser } = useSelector((state) => state.user);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const dispatch = useDispatch();
   const openModal = () => {
     setModal(true);
@@ -14,9 +15,9 @@ const Test8 = () => {
     setModal(false);
   };
   const logoutHandler = () => {
-    if (currentUser) {
+    if (userInfo) {
       setModal(false);
-      dispatch(logoutInitiate());
+      dispatch(signout());
     }
   };
   return (

@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import React, { useEffect, useState } from "react";
+import { v4 } from "uuid";
+import { storage } from "../firebase";
+
 import ClassDataService from "../services/classservices";
 const AddClass = () => {
   const [title, setTitle] = useState("");
   const [teacher, setTeacher] = useState("");
   const [course, setCourse] = useState("");
+  const [image, setImage] = useState("");
+  const [imgUpload, setImgUpload] = useState(null);
+  const [imgList, setImgList] = useState([]);
   const [message, setMessage] = useState({ error: false, msg: "" });
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +28,15 @@ const AddClass = () => {
     try {
       await ClassDataService.addClass(newClass);
       setMessage({ error: false, msg: "ne Class Added Sucessfully" });
+
+      // if (imgUpload === null) return;
+
+      // const imageRef = ref(storage, `classes/${imgUpload.name + v4()}`);
+      // uploadBytes(imageRef, imgUpload).then((snapshot) => {
+      //   getDownloadURL(snapshot.ref).then((url) => {
+      //     setImgList((prev) => [...prev, url]);
+      //   });
+      // });
     } catch (err) {
       setMessage({ error: true, msg: err.message });
       console.log(err);
@@ -28,8 +44,28 @@ const AddClass = () => {
     setTitle("");
     setCourse("");
     setTeacher("");
+    setImage("");
   };
+  const imageListRef = ref(storage, "classes");
+  // const uploadFile = () => {
+  //   if (imgUpload === null) return;
 
+  //   const imageRef = ref(storage, `classes/${imgUpload.name + v4()}`);
+  //   uploadBytes(imageRef, imgUpload).then((snapshot) => {
+  //     getDownloadURL(snapshot.ref).then((url) => {
+  //       setImgList((prev) => [...prev, url]);
+  //     });
+  //   });
+  // };
+  // useEffect(() => {
+  //   listAll(imageListRef).then((response) => {
+  //     response.items.forEach((item) => {
+  //       getDownloadURL(item).then((url) => {
+  //         setImgList((prev) => [...prev, url]);
+  //       });
+  //     });
+  //   });
+  // }, []);
   return (
     <>
       {message?.msg && (
@@ -79,6 +115,22 @@ const AddClass = () => {
               <div>
                 <div className="flex justify-between mb-2">
                   <label for="password" className="text-sm">
+                    Image URL
+                  </label>
+                </div>
+                <input
+                  type="text"
+                  name="image"
+                  id="image"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                  placeholder="Your Name"
+                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                />
+              </div>
+              <div>
+                <div className="flex justify-between mb-2">
+                  <label for="password" className="text-sm">
                     Teacher
                   </label>
                 </div>
@@ -92,6 +144,23 @@ const AddClass = () => {
                   className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
                 />
               </div>
+              {/* <input
+                type="file"
+                onChange={(e) => {
+                  setImgUpload(e.target.files[0]);
+                }}
+              /> */}
+              {/* <button onClick={uploadFile}>Upload</button> */}
+              {/* 
+              {imgList.map((url) => {
+                return (
+                  <img
+                    src={url}
+                    alt=""
+                    style={{ width: 40, height: 40, borderRadius: "50%" }}
+                  />
+                );
+              })} */}
             </div>
             <div className="space-y-2">
               <div>

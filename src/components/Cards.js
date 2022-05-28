@@ -113,7 +113,7 @@ const Cards = () => {
                   >
                     <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                       <img
-                        src="https://images.unsplash.com/3/doctype-hi-res.jpg?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1165"
+                        src={doc.image}
                         alt={doc.imageAlt}
                         className="w-full h-full object-center object-cover group-hover:opacity-75"
                       />

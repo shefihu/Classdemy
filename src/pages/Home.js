@@ -12,7 +12,7 @@ import Test5 from "./Test5";
 import Test6 from "./Test6";
 import Footer from "./Footer";
 const Home = () => {
-  const { currentUser } = useSelector((state) => state.user);
+  // const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // useEffect(() => {

@@ -12,9 +12,14 @@ import Test from "./pages/Test";
 import Test2 from "./pages/Test2";
 
 function App() {
-  const { currentUser } = useSelector((state) => state.user);
+  // const { currentUser } = useSelector((state) => state.user);
+  // const RequireAuth = ({ children }) => {
+  //   return currentUser ? children : <Navigate to="/login" />;
+  // };
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/login" />;
+    return userInfo ? children : <Navigate to="/login" />;
   };
   return (
     <div className="App bg-white">

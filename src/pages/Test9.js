@@ -2,7 +2,7 @@ import { getModularInstance } from "@firebase/util";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
-import { logoutInitiate } from "../redux/actions/actions";
+import { logoutInitiate, signout } from "../redux/actions/actions";
 import Test8 from "./Test8";
 function Test9() {
   const [show, setShow] = useState(true);
@@ -12,11 +12,12 @@ function Test9() {
   const dashboardClose = () => {
     setShow(false);
   };
-  const { currentUser } = useSelector((state) => state.user);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    if (currentUser) {
-      dispatch(logoutInitiate());
+    if (userInfo) {
+      dispatch(signout());
     }
   };
   return (

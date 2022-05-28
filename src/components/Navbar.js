@@ -1,3 +1,4 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -16,11 +17,12 @@ const Navbar = () => {
     return classes.filter(Boolean).join(" ");
   }
   const [show, setshow] = useState(false);
-  const { currentUser } = useSelector((state) => state.user);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    if (currentUser) {
-      dispatch(logoutInitiate());
+    if (userInfo) {
+      dispatch(signOut());
     }
   };
   return (
@@ -47,21 +49,7 @@ const Navbar = () => {
                   strokeLinejoin="round"
                 />
               </svg> */}
-              <svg
-                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"
-                  stroke="#1F2937"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <Link to="/class">Your Class</Link>
               <svg
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer"
                 width={24}
@@ -135,8 +123,8 @@ const Navbar = () => {
               </h1>
             </div>
             <div className="hidden sm:flex flex-row space-x-4">
-              {console.log(currentUser)}
-              {currentUser ? (
+              {console.log(userInfo)}
+              {userInfo ? (
                 <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">
                   <Test8 />
                 </button>
@@ -313,7 +301,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col gap-4 mt-4 w-80 mx-auto ">
               {/* <a href="#">Sign up</a> */}
-              {currentUser ? (
+              {userInfo ? (
                 <>
                   {" "}
                   <button class="self-center px-8 py-3 font-bold rounded bg-yellow-300 text-white dark:bg-violet-400 dark:text-coolGray-900">

@@ -1,21 +1,23 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import Cookies from "js-cookie";
 import rootReducer from "./reducers/rootReducer";
+import { userLoginReducer, userRegisterReducer } from "./reducers/reducer";
 const initialState = {
-  user: {
-    currentUser: Cookies.get("accessToken")
-      ? JSON.parse(Cookies.get("accessToken"))
+  userSignin: {
+    userInfo: Cookies.get("userInfo")
+      ? JSON.parse(Cookies.get("userInfo"))
       : null,
   },
 };
-const middleware = [thunk];
-if (process.env.NODE_ENV === "development") {
-  middleware.push(logger);
-}
+const reducer = combineReducers({
+  userSignin: userLoginReducer,
+  userRegister: userRegisterReducer,
+});
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(
-  rootReducer,
+  reducer,
   initialState,
-  applyMiddleware(...middleware)
+  composeEnhancer(applyMiddleware(thunk))
 );

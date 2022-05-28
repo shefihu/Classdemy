@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { loginInitiate } from "../redux/actions/actions";
+import { loginInitiate, signin } from "../redux/actions/actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
@@ -10,40 +10,53 @@ const Login = () => {
   //   email: "",
   //   password: "",
   // });
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
-  const { currentUser } = useSelector((state) => state.user);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo, loading, error } = userSignin;
+  // const { currentUser } = useSelector((state) => state.user);
   // const { loading } = { currentUser };
 
   const notify = () => toast("Wow so easy !");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(loading);
-
-  // const { email, password } = state;
+  // console.log(loading);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      return;
-    }
-
-    setLoading(true);
-    dispatch(loginInitiate(email, password));
-    // setState({ email: "", password: "" });
-    setLoading(true);
-
-    // Cookies.set("accessToken", user.currentUser.accessToken, {
-    //   expires: 7,
-    // });
+    dispatch(signin(email, password, navigate, toast));
   };
+  // console.log(userInfo);
+  // const { email, password } = state;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!email || !password) {
+  //     return;
+  //   }
+
+  //   // setState({ email: "", password: "" });
+
+  //   try {
+  //     dispatch(loginInitiate(email, password));
+  //     // setLoading(true);
+  //   } catch (error) {
+  //     alert(error);
+  //     // setLoading(false);
+  //   }
+  //   // Cookies.set("accessToken", user.currentUser.accessToken, {
+  //   //   expires: 7,
+  //   // });
+  // };
   useEffect(() => {
-    if (currentUser) {
+    if (userInfo) {
       navigate("/class");
+      toast("d");
     }
-  }, [currentUser, navigate]);
-  console.log(currentUser);
+  }, [userInfo, navigate]);
+  // if (!userInfo.password) {
+  //   alert("what");
+  // }
+  // console.log(currentUser);
   // useEffect(() => {
   //   if (!currentUser) {
   //     navigate("/login");
@@ -59,6 +72,11 @@ const Login = () => {
       <Navbar />
       <ToastContainer />
       <section class="w-full h-screen px-8 py-16 bg-gray-100 xl:px-8">
+        {/* {error && (
+          <>
+            <h1>Inalid</h1>
+          </>
+        )} */}
         <div class="max-w-5xl mx-auto">
           <div class="flex flex-col items-center md:flex-row">
             <div class="w-full space-y-5 md:w-3/5 md:pr-16">

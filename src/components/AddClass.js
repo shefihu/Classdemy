@@ -1,5 +1,6 @@
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import { storage } from "../firebase";
 
@@ -14,6 +15,7 @@ const AddClass = () => {
   const [imgUpload, setImgUpload] = useState(null);
   const [imgList, setImgList] = useState([]);
   const [message, setMessage] = useState({ error: false, msg: "" });
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -31,8 +33,11 @@ const AddClass = () => {
     try {
       setLoading(true);
       await ClassDataService.addClass(newClass);
+      console.log(newClass);
       setMessage({ error: false, msg: "New Class Added Sucessfully" });
-
+      if ({ error: false }) {
+        navigate("/class");
+      }
       // if (imgUpload === null) return;
 
       // const imageRef = ref(storage, `classes/${imgUpload.name + v4()}`);

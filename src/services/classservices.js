@@ -20,7 +20,7 @@ class ClassDataService {
   };
   deleteClass = (id) => {
     const classDoc = doc(db, "classes", id);
-    return deleteDoc();
+    return deleteDoc(classDoc);
   };
   getAllClasses = () => {
     return getDocs(classCollectionRef);

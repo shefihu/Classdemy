@@ -3,11 +3,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AddClass from "./components/AddClass";
 import Blog from "./pages/Blog";
 import Classes from "./pages/Classes";
+import Dashboardf2 from "./pages/Dashboardf2";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Register";
 import SingleClass from "./pages/SingleClass";
+import SingleClass2 from "./pages/SingleClass2";
 import Test from "./pages/Test";
 import Test2 from "./pages/Test2";
 
@@ -45,6 +47,7 @@ function App() {
         <Route path="addclass" element={<AddClass />} />
         <Route path="singleclass" element={<SingleClass />} />
         <Route path="test2" element={<Test2 />} />
+        <Route path="dash" element={<SingleClass2 />} />
       </Routes>
     </div>
   );
